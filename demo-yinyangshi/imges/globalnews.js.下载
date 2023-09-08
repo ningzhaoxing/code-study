@@ -1,0 +1,19 @@
+function getGlobalNews(){
+      var  _news = [],
+            _num = Math.floor(Math.random()*2);
+
+		_news.push({KindShortName:'三石精选',
+			ShortTitle:'游戏党必备好物，新人特价包邮！',
+			NewsUrl:'https://act.you.163.com/act/pub/ABuyLQKNmKmK.html?from=out_ynzy_game_2',
+                        ImageUrl:'https://nie.res.netease.com/r/pic/20191225/14a6a628-07cd-40a3-9164-029fd178c36a.jpg',
+			ShowTime:'2020-07-28'})
+_news.push({KindShortName:'三石精选',
+			ShortTitle:'新人有好礼！25元专属券限时领！',
+			NewsUrl:'https://act.you.163.com/act/pub/qAU4P437asfF.html?from=out_ynzy_game_1',
+                        ImageUrl:'https://nie.res.netease.com/r/pic/20200306/0e576eea-1912-4fd9-ba68-8c1339f6acea.jpg',
+			ShowTime:'2020-03-06'})
+
+
+
+	return _news[Math.floor(Math.random()*_news.length)]
+  }
