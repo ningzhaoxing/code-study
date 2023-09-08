@@ -1,0 +1,424 @@
+var _paq = window._paq || []
+;(function () {
+  /*
+   * common-header-footer start
+   * 读取初始配置信息
+   * mode模式：normal默认，special特殊模式
+   */
+
+  function _log() {
+    if (globalCSGOConfig.debug == 1) {
+      if (window.console && console.log) {
+        var args = Array.prototype.slice.call(arguments)
+        console.log.apply(null, args)
+      }
+    }
+  }
+  function getParameter(str) {
+    if (!str) {
+      return false
+    }
+    try {
+      if (str == 'special' || str == 'normal') {
+        return str
+      }
+      eval('str=' + str)
+      if (str === false || str === 0) {
+        return -1
+      }
+      if (str === true || str === 1) {
+        return 1
+      }
+      if (str === -1 ) {
+        return -1
+      }
+      if (str ===  2) {
+        return 2
+      }
+      if (typeof str == 'object') {
+        return str
+      }
+      if (str) {
+        return {}
+      }
+    } catch (e) {}
+    return false
+  }
+  var wmParameter = (function () {
+    var k = document.getElementsByTagName('script')
+    var l = k.length - 1
+    return {
+      mode: getParameter(k[l].getAttribute('mode')),
+      top: getParameter(k[l].getAttribute('top')),
+      bottom: getParameter(k[l].getAttribute('bottom')),
+      bottomappend: getParameter(k[l].getAttribute('bottomappend')), // 插入指定的ID
+      fixedtop: getParameter(k[l].getAttribute('fixedtop')),
+      logo: getParameter(k[l].getAttribute('logo')),
+      time: getParameter(k[l].getAttribute('time')),
+      login: getParameter(k[l].getAttribute('login')),
+      debug: getParameter(k[l].getAttribute('debug')),
+      viewportwidth: +k[l].getAttribute('viewportwidth'),
+    }
+  })()
+
+  var globalCSGOConfig = {}
+  var tagConfig = document.getElementsByTagName('script')
+  for (var i = 0; i < tagConfig.length; i++) {
+    if (tagConfig[i].src.indexOf('js/common/public.js') !== -1) {
+      _log(tagConfig[i], 'tagConfig')
+      globalCSGOConfig = GetRequest(tagConfig[i].src)
+      break
+    }
+  }
+  globalCSGOConfig = $.extend(globalCSGOConfig, wmParameter)
+  _log(globalCSGOConfig)
+
+  function isMobile() {
+    var userAgentInfo = navigator.userAgent
+    var Agents = new Array(
+      'Android',
+      'iPhone',
+      'SymbianOS',
+      'Windows Phone',
+      'iPad',
+      'iPod',
+      'Windows CE',
+      'BlackBerry'
+    )
+    var flag = false
+    for (var v = 0; v < Agents.length; v++) {
+      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+        flag = true
+        break
+      }
+    }
+    return flag
+  }
+
+  function toHex(str) {
+    var dest = ''
+    for (var i = 0; i < str.length; i++) {
+      dest += str.charCodeAt(i).toString(16)
+    }
+    return dest
+  }
+
+  function _getSiteCookie(name) {
+    //get wanmei.com cookie
+    var strCookie = document.cookie
+    var arrCookie = strCookie.split('; ')
+    for (var i = 0; i < arrCookie.length; i++) {
+      var arr = arrCookie[i].split('=')
+      if (arr[0] == name) return arr[1]
+    }
+    return ''
+  }
+  function siteTracking(uid) {
+    //百度
+    window._hmt &&
+      _hmt.push(['_setUserId', (_getSiteCookie('lgEsportsUid') || uid) + ''])
+  }
+
+  function init() {
+    //如果是app不显头
+    if (globalCSGOConfig.bottom != -1) {
+      if (navigator.userAgent.indexOf('EsportsApp') > -1) {
+        $('#J_csgo_header_nav, #J_csgo_footer_bar').hide()
+      } else {
+        $('#J_csgo_header_nav, #J_csgo_footer_bar').show()
+      }
+    }
+    if (globalCSGOConfig.top == -1) {
+      return
+    }
+    var J_csgo_header_nav = $('#J_csgo_header_nav')
+    var _ismobile = isMobile()
+    //加载完显示头尾 注：区分手机和响应试不同
+    $('.nav-item > li', J_csgo_header_nav)
+      .on('mouseenter', function () {
+        if (!_ismobile) {
+          $(this).addClass('hover').find('ol').slideDown()
+        }
+      })
+      .on('click', function (e) {
+        if (_ismobile) {
+          var self = $(this)
+          self.find('ol')[self.hasClass('hover') ? 'slideUp' : 'slideDown']()
+          self[self.hasClass('hover') ? 'removeClass' : 'addClass']('hover')
+        }
+      })
+      .on('mouseleave', function () {
+        if (!_ismobile) {
+          $(this).removeClass('hover').find('ol').stop(true, false).slideUp()
+        }
+      })
+    //移动端点击打开菜单
+    $('.btn-menu', J_csgo_header_nav).on('click', function () {
+      var nav_item = $('.nav-item', J_csgo_header_nav)
+      if (nav_item.hasClass('show')) {
+        nav_item.removeClass('show')
+      } else {
+        nav_item.addClass('show')
+      }
+    })
+    var HtmlUtil = {
+      htmlEncodeByRegExp: function (str) {
+        var s = ''
+        if (str.length == 0) return ''
+        s = str.replace(/&/g, '&amp;')
+        s = s.replace(/</g, '&lt;')
+        s = s.replace(/>/g, '&gt;')
+        s = s.replace(/ /g, '&nbsp;')
+        s = s.replace(/\'/g, '&#39;')
+        s = s.replace(/\"/g, '&quot;')
+        return s
+      },
+    } //xss防止恶意字符
+
+    if (isMobile() == false) {
+      var prompt_bg = $('<div class="prompt_bg" id="J_csgo_prompt_bg"></div>')
+      prompt_bg.css({
+        position: 'fixed',
+        left: '0',
+        top: '0',
+        width: '100%',
+        height: '100%',
+        'background-color': 'rgba(0,0,0,0.7)',
+        'z-index': '8888',
+        display: 'none',
+      })
+      $('body').append(prompt_bg)
+    }
+    var siteuserid = ''
+    //login
+    var baseurl = 'https://www.csgo.com.cn'
+    if (
+      /^www([\s\w=\">\<-]*[\W]*)*\.csgo\.com\.cn/g.test(location.hostname) ||
+      /^csgo([\s\w=\">\<-]*[\W]*)*\.wanmei\.com/g.test(location.hostname) ||
+      /^shequfu.com/g.test(location.hostname) ||
+      /^shequfu.net/g.test(location.hostname) ||
+      /^xn--dkr447bejn.com/g.test(location.hostname) ||
+      /^xn--dkr447bejn.cn/g.test(location.hostname) ||
+      /^xn--dkr447bejn.net/g.test(location.hostname)
+    ) {
+      baseurl = ''
+    }
+    $.ajax({
+      url: baseurl + '/login/steam',
+      type: 'get',
+      data: { task: 'base', redirect: encodeURI(location.href) },
+      dataType: 'jsonp',
+      jsonp: 'callback',
+      jsonpCallback: 'getResult',
+      success: function (data) {
+        var res = data.result
+        if (data.status == 'success') {
+          if (isMobile()) {
+            $('.btn_log_in', J_csgo_header_nav).attr('href', res.loginUrl)
+          }
+          if (res.isLogin == true) {
+            siteuserid = res.steamId
+            $('.userName', J_csgo_header_nav).text(res.nickname)
+            $('.csgo-topbar2').removeClass('in').addClass('out')
+            $('.btn_log_out', J_csgo_header_nav).attr('href', res.logoutUrl)
+            window.initEvent && window.initEvent(res.steamId)
+          }else{
+            window.initEvent && window.initEvent()
+          }
+        }
+      },
+      error: function() {
+        window.initEvent && window.initEvent()
+      }
+    }).always(function (data, status, xhr) {
+      siteTracking(siteuserid)
+    })
+
+    $('.m-step-item').on('click', function () {
+        var domClassNum = $(this).hasClass('m-step-1') ? 1 : 2
+        $('.tg-content').addClass('m-tab' + domClassNum)
+        $('.tg-content').removeClass('m-tab' + (domClassNum == 1 ? 2 : 1))
+    })
+
+    /* tracking download */
+    $('.J_download_csgo').on('click', function () {
+      var self = $(this),
+        tag = self.attr('data-statname')
+      window._hmt && _hmt.push(['_trackEvent', '蒸汽平台客户端', '下载', tag])
+    })
+    $('.J_download_pvp').on('click', function () {
+      var self = $(this),
+        tag = self.attr('data-statname')
+      window._hmt && _hmt.push(['_trackEvent', '官方竞技平台', '下载', tag])
+    })
+
+    if ($(window).width() < 750) {
+      $('.tg-header', J_csgo_header_nav).removeClass('on')
+    }
+    var timer = setTimeout(function () {
+      $('.tg-header', J_csgo_header_nav).removeClass('on')
+      $('.tg-content', J_csgo_header_nav).stop().animate({ height: '0px' }, 300)
+    }, 10000)
+    J_csgo_header_nav.on('click', '.tg-header', function () {
+      clearTimeout(timer)
+      if ($(this).hasClass('on')) {
+        $(this).removeClass('on')
+        $('.tg-content', J_csgo_header_nav)
+          .stop()
+          .animate({ height: '0px' }, 600)
+      } else {
+        $(this).addClass('on')
+        var height_tg = isMobile() ? '600px' : '660px'
+
+        $('.tg-content', J_csgo_header_nav)
+          .stop()
+          .animate({ height: height_tg }, 600)
+      }
+    })
+
+    //配置是否滚alert
+    if (globalCSGOConfig.fixedtop != -1) {
+      // 固定在顶部
+      if(globalCSGOConfig.fixedtop == 2) {
+        $('#J_csgo_header_nav').css({
+          position: 'fixed',
+          'z-index': 100,
+          top: 0,
+        })
+        return;
+      }
+      //给页面绑定滑轮滚动事件
+      if (document.addEventListener) {
+        //firefox
+        document.addEventListener('DOMMouseScroll', scrollFunc, false)
+      }
+      //滚动滑轮触发scrollFunc方法  //ie 谷歌
+      window.onmousewheel = document.onmousewheel = scrollFunc
+      $(window).on('scroll', function () {
+        scrollFunc()
+      })
+      function scrollFunc() {
+        $('.tg-header', J_csgo_header_nav).removeClass('on')
+        $('.tg-content', J_csgo_header_nav)
+          .stop()
+          .animate({ height: '0px' }, 300)
+        var top = $(this).scrollTop() // 当前窗口的滚动距离
+        if (top > 0) {
+          $('.csgo-navbox').css({
+            position: 'fixed',
+            'z-index': 100,
+            top: 0,
+          })
+          $('body').css({
+            paddingTop: '70px',
+          })
+        } else {
+          $('.csgo-navbox').css({
+            position: 'relative',
+            'z-index': 100,
+            top: 0,
+          })
+          $('body').css({
+            paddingTop: '0px',
+          })
+        }
+      }
+    }
+  }
+  function createBaseCss(url) {
+    var link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = url
+    //document.getElementsByTagName('head')[0].appendChild(link);
+    document.querySelector('head').insertBefore(link, document.head.children[0])
+  }
+
+  $(function () {
+    var version = '?v=20230329',
+      url = ''
+    var whiteListDomain = [
+      'shequfu.com',
+      'shequfu.net',
+      'xn--dkr447bejn.com',
+      'xn--dkr447bejn.cn',
+      'xn--dkr447bejn.net',
+    ]
+    url =
+      whiteListDomain.indexOf(location.host) > -1 ||
+      location.host.indexOf(':') > -1 ||
+      location.hostname.indexOf('wanmei.com') > -1 ||
+      location.hostname == 'localhost'
+        ? 'https://www.csgo.com.cn'
+        : ''
+
+    $.when(
+      $.getScript('https://esports.wanmei.com/js/libs/cookies_tip.js'),
+      //$.getScript(url + '/common/cookies_tip.js' + version),
+      globalCSGOConfig.top != -1 &&
+        $.getScript(url + '/common/top_nav.js' + version),
+      globalCSGOConfig.bottom != -1 &&
+        $.getScript(url + '/common/bottom_cover.js' + version),
+      (globalCSGOConfig.bottom != -1 || globalCSGOConfig.top != -1) &&
+        createBaseCss(url + '/common/base.css' + version),
+      $.getScript('//static.games.wanmei.com/public/js/stat.js')
+    ).then(init)
+    if (!isMobile()) {
+      var isshowlogin = false
+      $('body')
+        .on('click', '.btn_log_in', function () {
+          if (!isshowlogin) {
+            loginDialogInit()
+          }
+          isshowlogin = true
+          $('#g-login-dialog').show().html(diglogContent)
+        })
+        .on('click', '#g-login-dialog-close', function () {
+          $('#g-login-dialog').hide().html('')
+        })
+    } else {
+      $('body').addClass('g-bd-mobile')
+    }
+  })
+
+  var envStr = location.host.split('.')[0].split('-')[1]
+  var devHost = 'esports' + (envStr ? '-' + envStr : '')
+  //社区服特殊处理
+  var redirectUrl = location.hostname.indexOf('xn--dkr447bejn') > -1 ? 'https://csgo.wanmei.com/communityserver' :location.href
+  var loginUrl =
+    '//' +
+    devHost +
+    '.wanmei.com/pwlogin/index?pwCallback=' +
+    redirectUrl +
+    '&isAutoLogin=' +
+    localStorage.pw_auto_login
+  var diglogContent =
+    "<div class='g-pw-dialog-main'><a id='g-login-dialog-close' class='g-pw-dialog-close'>╳</a><iframe sandbox='allow-scripts allow-top-navigation allow-same-origin' style='width:100%;height:100%;border:0' src='" +
+    loginUrl +
+    "'></iframe></div>"
+  var dialog =
+    "<div id='g-login-dialog' class='g-pw-dialog-login'>" +
+    diglogContent +
+    '</div>'
+
+  function loginDialogInit() {
+    $('body')
+      .append(dialog)
+      .append('<script src="//esports.wanmei.com/js/libs/pwe.js"></script>')
+  }
+  //loginDialogInit()
+  // share
+  if (
+    location.host.indexOf('.csgo.com.cn') > -1 &&
+    typeof window.PW_wxShare != 'undefined'
+  ) {
+    PW_wxShare(
+      {
+        shareTitle: document.title,
+        shareInfo:
+          '由Valve开发,完美世界代理的第一人称射击团队竞技游戏CS:GO,是享誉世界的CS正统续作。传承经典,枪林弹雨中争当战场精英。享受公平竞技,FPS枪战对决的酣畅快感!',
+        shareUrl: 'https://www.csgo.com.cn/web201607/img/mobile/share.jpg',
+      },
+      function () {}
+    )
+  }
+})()

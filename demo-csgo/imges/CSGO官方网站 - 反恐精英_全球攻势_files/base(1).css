@@ -1,0 +1,1828 @@
+@charset "utf-8";
+
+html {
+    cursor: default;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+label,
+td,
+th {
+    cursor: text;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    cursor: pointer;
+}
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+    background-color: #f7f8f8;
+    color: #333;
+}
+
+div,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+select,
+textarea,
+table,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+area {
+    outline: none;
+}
+
+img {
+    border: 0;
+    outline: none;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+/* nav Start */
+.csgo-navbox {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    z-index: 9999;
+}
+
+.bd-mobile .csgo-navbox {
+    display: none !important;
+}
+
+.bd-mobile>.csgo-bottom {
+    display: none !important;
+}
+
+.font-size18 {
+    font-size: 18px !important;
+}
+
+.csgo-nav {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+    position: relative;
+    padding-left: 140px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.csgo-logo {
+    position: absolute;
+    left: 10px;
+}
+
+.csgo-logo a {
+    display: block;
+    margin-top: 9px;
+}
+
+.csgo-logo a img {
+    display: block;
+    width: 110px;
+}
+
+.csgo-nav_list {
+    width: 100%;
+}
+
+.csgo-nav_list .btn-menu {
+    display: none;
+    float: right;
+    width: 25px;
+    height: 19px;
+    margin-top: 26px;
+    margin-right: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    background-image: url("./images/icon-menu.png");
+}
+
+.csgo-nav_list .nav-item {
+    height: 70px;
+}
+
+.csgo-nav_list .nav-item>li {
+    float: left;
+    position: relative;
+    height: 70px;
+}
+
+.csgo-nav_list .nav-item>li.li-isapp {
+    display: none;
+}
+
+.csgo-nav_list .nav-item>li>a {
+    display: block;
+    height: 100%;
+    padding: 26px 20px 0;
+    color: #fff;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.csgo-nav_list .nav-item>li ol {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 5px;
+    width: 160px;
+    padding: 7px 0;
+    background-color: rgba(14, 17, 27, 0.9);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.csgo-nav_list .nav-item>li ol li:hover {
+    background-color: #1d2335;
+}
+
+.csgo-nav_list .nav-item>li ol a {
+    display: block;
+    color: #e5ebfc;
+    font-size: 16px;
+    padding: 14px 20px;
+    line-height: 100%;
+}
+
+.csgo-nav_list .nav-item>li a.icon-arrow::before {
+    content: "";
+    position: absolute;
+    right: 7px;
+    top: 34px;
+    width: 11px;
+    height: 5px;
+    transition: transform 0.6s;
+    background-image: url("./images/icon_arrow.png");
+}
+
+.csgo-nav_list .nav-item>li.hover .icon-arrow::before {
+    transform: rotate(180deg);
+}
+
+.responsive-pc .csgo-nav_list .nav-item>li:hover .icon-arrow::before {
+    transform: rotate(180deg);
+}
+
+.csgo-nav_list a h4 {
+    cursor: pointer;
+    line-height: 100%;
+    font-weight: 400;
+}
+
+.csgo-nav_list a span {
+    width: 48px;
+    height: 1px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -24px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.csgo-nav_list .nav-item>li:hover a span {
+    opacity: 1;
+    background-color: #1ed7ff;
+}
+
+@media screen and (max-width: 1060px) {
+    .csgo-nav_list .nav-item>li>a {
+        padding: 26px 16px 0;
+    }
+
+    body .csgo-bottom .rel1100 .certificate {
+        left: -50px !important;
+    }
+
+    .csgo-nav_list .nav-item>li a.icon-arrow::before {
+        right: 0;
+    }
+}
+
+.csgo-topbar2 {
+    float: right;
+    background: url(./images/nav_icon_bg.jpg) no-repeat center center;
+}
+
+.csgo-topbar2.in,
+.csgo-topbar2.out {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    white-space: nowrap;
+    background: none;
+    padding-top: 22px;
+}
+
+.csgo-topbar2.out::before {
+    content: "";
+    position: absolute;
+    width: 162px;
+    right: 0;
+    bottom: -25px;
+    height: 26px;
+}
+
+.csgo-topbar2 .log_out span {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.csgo-topbar2 .log_out a.userName {
+    color: #bbb;
+}
+
+.csgo-topbar2 .log_out a.userName:hover {
+    color: #fff;
+}
+
+.csgo-topbar2 .log_out span em {
+    font-style: normal;
+}
+
+@media screen and (max-width: 750px) {
+    .csgo-nav {
+        height: 60px;
+    }
+
+    .csgo-topbar2.in {
+        padding-top: 18px;
+    }
+
+    .csgo-topbar2 .log_out span {
+        max-width: 72px;
+    }
+
+    .csgo-navbox .csgo-nav_list .btn-menu {
+        margin-top: 22px;
+    }
+
+    .csgo-navbox .nav-item.show+.csgo-topbar2 .log_out span {
+        max-width: 150px;
+    }
+
+    .csgo-navbox .csgo-nav_list .nav-item {
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+
+    .csgo-navbox .csgo-logo {
+        left: 20px;
+    }
+
+    .csgo-navbox .csgo-logo a img {
+        width: 92px;
+    }
+
+    .csgo-nav_list .btn-menu {
+        margin-right: 20px;
+    }
+
+    .csgo-navbox .csgo-nav .csgo-topbar2.in,
+    .csgo-navbox .csgo-nav .csgo-topbar2.out {
+        right: 66px;
+        padding-top: 18px;
+    }
+
+    .csgo-topbar2 .log_out span {
+        max-width: 132px;
+    }
+}
+
+.csgo-topbar2.in p,
+.csgo-topbar2.out p {
+    color: #bbbbbb;
+    font-size: 18px;
+}
+
+.csgo-topbar2.in a,
+.csgo-topbar2.out a {
+    color: #1ed7ff;
+    font-size: 18px;
+}
+
+.csgo-topbar2.in:hover::after,
+.topbar2.out:hover::after {
+    border-top-color: #fff;
+}
+
+.csgo-topbar2.in .log_out {
+    display: none;
+}
+
+.csgo-topbar2.out .log_in {
+    display: none;
+}
+
+.csgo-log_out em {
+    font-style: normal;
+}
+
+.csgo-user_info {
+    width: 419px;
+    height: 306px;
+    padding: 12px 18px 0;
+    background: #111521;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 3;
+    display: none;
+}
+
+.csgo-topbar2.out:hover .csgo-user_info {
+    display: block;
+}
+
+.csgo-csgo-user_info h3 {
+    height: 30px;
+    margin-bottom: 12px;
+    line-height: 30px;
+    font-size: 18px;
+    color: #e1e4ef;
+    cursor: default;
+    border-bottom: 1px solid #31384d;
+}
+
+.csgo-csgo-topbar2 .user_info h3 a {
+    margin-left: 5px;
+    padding: 9px;
+    float: none;
+    background: url(./images/icon_info.png) no-repeat center center;
+}
+
+.csgo-user_info .csgoInfo {
+    width: 100%;
+    height: 110px;
+    margin-bottom: 16px;
+}
+
+.csgo-user_info .csgoInfo .headImg {
+    width: 108px;
+    height: 108px;
+    margin-right: 26px;
+    float: left;
+    overflow: hidden;
+    border: 1px solid #31384d;
+}
+
+.csgo-user_info .csgoInfo .txz_info {
+    padding-top: 14px;
+    float: left;
+}
+
+.csgo-user_info .csgoInfo .txz_info p {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #a4adc8;
+    font-style: normal;
+}
+
+.csgo-user_info .csgoInfo em {
+    font-style: normal;
+}
+
+.csgo-user_info .txz p {
+    height: 28px;
+    color: #a4adc8;
+    line-height: 28px;
+}
+
+.csgo-user_info .txz p span {
+    float: left;
+}
+
+.csgo-user_info .txz p em {
+    font-style: normal;
+    float: left;
+}
+
+.csgo-user_info .txz em.icon {
+    color: #6985b3;
+    margin-right: 8px;
+    padding-left: 18px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.csgo-user_info .txz em.icon.icon_fcm {
+    background-image: url(./images/main/icon_fcm.png);
+}
+
+.csgo-user_info .txz em.icon.icon_phone {
+    background-image: url(./images/main/icon_phone.png);
+}
+
+.csgo-user_info .txz em.icon.icon_mail {
+    background-image: url(./images/main/icon_mail.png);
+}
+
+.csgo-user_info .txz em.icon.icon_ry {
+    background-image: url(./images/main/icon_ry.png);
+}
+
+.csgo-nav_list a.icon2:hover {
+    border-bottom: 0;
+}
+
+.ico2_wx {
+    background-position: right top;
+}
+
+.ico2_wb {
+    background-position: left top;
+}
+
+.ico2_wx:hover {
+    background-position: right bottom;
+}
+
+.ico2_wb:hover {
+    background-position: left bottom;
+}
+
+.pop_wx {
+    width: 145px;
+    height: 145px;
+    margin-left: 457px;
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    z-index: 100;
+}
+
+.pop_wx img {
+    width: 145px;
+    height: 145px;
+}
+
+.nav_btn {
+    width: 100%;
+    height: 34px;
+    position: relative;
+    text-align: center;
+    color: #fff;
+    line-height: 32px;
+    font-size: 18px;
+    background: url(./images/bg_nav_btn.jpg) no-repeat center center;
+}
+
+.nav_btn span {
+    width: 14px;
+    height: 7px;
+    margin-left: 76px;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    background: url(./images/icon_navBtn.png) no-repeat center top;
+}
+
+.nav_btn.on span {
+    background-position: center bottom;
+}
+
+.nav_process_box {
+    width: 100%;
+    max-width: 1920px;
+    height: 232px;
+    margin: 0 auto;
+    background: #d3d9e0;
+    overflow: hidden;
+    position: relative;
+}
+
+.nav_process {
+    width: 1230px;
+    height: 178px;
+    margin: 0 auto;
+    padding-top: 22px;
+}
+
+.process_top01 {
+    width: 216px;
+    height: 30px;
+    float: left;
+    position: relative;
+    background: url(./images/process_bottom02.png) no-repeat center bottom;
+}
+
+.process_top01 span {
+    color: #826c4c;
+    font-size: 16px;
+    position: absolute;
+    top: 16px;
+    left: 66px;
+}
+
+.process_top02 {
+    width: 504px;
+    height: 30px;
+    float: left;
+    margin-left: 146px;
+    position: relative;
+    background: url(./images/process_top.png) no-repeat center bottom;
+}
+
+.process_top02 span {
+    color: #27354e;
+    font-size: 18px;
+    position: absolute;
+    top: 16px;
+    left: 190px;
+}
+
+.process_top03 {
+    width: 216px;
+    height: 30px;
+    float: left;
+    margin-left: 138px;
+    position: relative;
+    background: url(./images/process_bottom03.png) no-repeat center bottom;
+}
+
+.process_top03 span {
+    color: #826c4c;
+    font-size: 16px;
+    position: absolute;
+    top: 16px;
+    left: 21px;
+}
+
+.process_top03 a {
+    color: #f87500;
+    text-decoration: underline;
+    padding-right: 20px;
+    background: url(./images/icon_notes.png) no-repeat right center;
+    position: absolute;
+    top: 37px;
+    left: 58px;
+    font-size: 16px;
+}
+
+.process {
+    width: 1240px;
+    height: 136px;
+}
+
+.process li {
+    width: 236px;
+    height: 80px;
+    margin-right: 12px;
+    padding-top: 56px;
+    float: left;
+    cursor: default;
+    position: relative;
+    background-image: url(./images/process.jpg);
+    background-repeat: no-repeat;
+    box-sizing: content-box;
+}
+
+.step_01 {
+    background-position: 0 0;
+}
+
+.step_02 {
+    background-position: 0 -136px;
+}
+
+.step_03 {
+    background-position: 0 -272px;
+}
+
+.step_04 {
+    background-position: 0 -408px;
+}
+
+.step_05 {
+    background-position: 0 -544px;
+}
+
+.m-step-tab {
+    display: none;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.m-step-tab .m-step-item {
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    background: #a8b0bd;
+    color: #fff;
+}
+
+
+.m-tab1 .m-step-tab .m-step-item:first-of-type {
+    color: #10141f;
+    background: transparent;
+}
+
+.m-tab2 .m-step-tab .m-step-item:nth-of-type(2) {
+    color: #10141f;
+    background: transparent;
+}
+
+.process li p {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-top: 22px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+}
+
+.process li.step_01 p {
+    padding-top: 0;
+    margin-top: 12px;
+}
+
+.process li p.size_m {
+    padding-top: 0;
+    font-size: 12px;
+    line-height: 14px;
+    color: #ad946c;
+}
+
+.process li.step_04 p.size_m {
+    color: #fff;
+    text-align: left;
+    width: 200px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.process li.step_04 p.p_top {
+    margin-top: 5px;
+}
+
+.process li.step_05 p {
+    margin-bottom: 5px;
+}
+
+.process li.step_05 p.size_m {
+    color: #c3b57f;
+    text-align: left;
+    width: 192px;
+    line-height: 16px;
+    margin: 0 auto;
+}
+
+.process li p .step_hl {
+    font-weight: 400;
+}
+
+.process li p a {
+    color: #f87500;
+    text-decoration: underline;
+    padding-right: 20px;
+    background: url(./images/icon_notes.png) no-repeat right center;
+}
+
+.step_btn {
+    width: 182px;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 auto;
+    margin-top: 18px;
+    text-align: center;
+    background: #453318;
+    border-radius: 20px;
+}
+
+.step_01 .step_btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+}
+
+.step_02 .step_btn {
+    width: 188px;
+}
+
+.process li span {
+    width: 100%;
+    height: 107px;
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 100;
+}
+
+.process li.step_03 span {
+    background-image: url(./images/tab_txz.png);
+}
+
+.process li.step_02 span {
+    background-image: url(./images/tab_csgo.png);
+}
+
+.process_top03 .notes {
+    width: 236px;
+    height: 107px;
+    position: absolute;
+    left: -42px;
+    top: -88px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 100;
+    background: url(./images/tab_stem.png) no-repeat;
+    display: none;
+}
+
+.process_top03 a:hover {
+    display: block;
+}
+
+.process li p a.step_link_txt {
+    color: #f87500;
+    padding-right: 0;
+    background: none;
+}
+
+/* nav End */
+
+/*右侧相同部分*/
+.count_list {
+    width: 350px;
+}
+
+.count_box ul li a span {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 20px;
+    left: 19px;
+    transition: all 1s;
+    -moz-transition: all 1s;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+}
+
+.stats-input {
+    display: none;
+}
+
+.guides {
+    width: 350px;
+    background: #f7f8f8;
+    margin-top: 20px;
+}
+
+.guides_tit {
+    width: 100%;
+    position: relative;
+}
+
+.guides_tit .titlea {
+    display: block;
+    width: 136px;
+    height: 22px;
+}
+
+.guides_tit .list_more {
+    display: block;
+    width: 40px;
+    height: 20px;
+    padding: 0 3px 0 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: #181a25;
+    line-height: 20px;
+    border: 1px solid #181a25;
+}
+
+.guides_tit .list_more span {
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: 5px;
+    right: 4px;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+.guides_tit .list_more:hover span {
+    transform: rotate(180deg) scale(1.2);
+    -ms-transform: rotate(180deg) scale(1.2);
+    -moz-transform: rotate(180deg) scale(1.2);
+    -webkit-transform: rotate(180deg) scale(1.2);
+    -o-transform: rotate(180deg) scale(1.2);
+}
+
+.guides_list {
+    width: 100%;
+    overflow: hidden;
+}
+
+.guides_list ul {
+    width: 100%;
+    float: left;
+    margin-bottom: 14px;
+    margin-right: 28px;
+}
+
+.guides_list li {
+    text-align: center;
+    float: left;
+    margin-right: 22px;
+    margin-bottom: 6px;
+}
+
+.guides_list ul li.guides_list_tit {
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin-top: 8px;
+}
+
+.guides_list li a {
+    display: block;
+    height: 20px;
+    color: #404040;
+}
+
+.guides_list li a:hover {
+    color: #654b25;
+    text-decoration: underline;
+}
+
+.guides_list_tit {
+    font-size: 16px;
+    color: #333333;
+    font-weight: bold;
+}
+
+/*底部版权样式*/
+.csgo-bottom {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background-color: #000;
+    background-repeat: no-repeat;
+    z-index: 1;
+    font-size: 12px;
+    color: #959595;
+    position: relative;
+}
+
+@media screen and (max-width: 1000px) {
+    .csgo-bottom {
+        text-align: center;
+        height: initial;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .csgo-bottom .foot_dl dt a {
+        float: none !important;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+    .csgo-bottom .certificate {
+        text-align: center;
+    }
+
+    .csgo-nav_list .nav-item>li.li-isapp {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .nav_process_box {
+        height: 0;
+    }
+}
+
+.csgo-bottom .foot_dl {
+    position: absolute;
+    top: 30px;
+}
+
+.csgo-bottom .foot_dl dt {
+    float: left;
+    /*padding-left: 75px;*/
+}
+
+.csgo-bottom .foot_dl dt a {
+    float: left;
+    padding: 0 12px;
+}
+
+.csgo-bottom .foot_dl dt a.wanmei {
+    border-right: 1px solid #000;
+}
+
+.csgo-bottom .foot_dl dd {
+    float: right;
+    width: 796px;
+    box-sizing: border-box;
+}
+
+.csgo-bottom .foot_dl dd p {
+    padding-top: 5px;
+}
+
+.csgo-bottom .rel1100 .certificate {
+    position: absolute;
+    top: 85px;
+    left: 350px;
+}
+
+.csgo-bottom .rel1100 .certificate img {
+    vertical-align: middle;
+}
+
+.csgo-bottom .rel1100 .certificate a {
+    color: #53bdfa;
+}
+
+.rel1100 {
+    margin: 0 auto;
+    width: 1104px;
+    position: relative;
+}
+
+.bottom .rel1100 .remark span,
+.csgo-bottom .rel1100 .remark span {
+    vertical-align: middle;
+}
+
+.bottom .rel1100 .img-age12,
+.csgo-bottom .rel1100 .img-age12 {
+    width: 28px;
+    height: 36px;
+    background: url(https://img.csgo.com.cn/csgostatic/csgo/2b82f055-4547-466b-b636-842d9a73b2ea.png) no-repeat;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.btn_top {
+    position: fixed;
+    width: 52px;
+    height: 52px;
+    background: url(./images/top_icon.png) no-repeat;
+    left: 65%;
+    bottom: 270px;
+    margin-left: 387px;
+    display: none;
+    z-index: 9;
+}
+
+.btn_top a {
+    display: block;
+    height: 52px;
+}
+
+/*登录弹窗*/
+.csgo-topbar2 .pop {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    z-index: 1200;
+    width: 545px;
+    background-color: #161a26;
+    font-size: 16px;
+    color: #e5ebfc;
+}
+
+.csgo-topbar2 .pop_tit {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 100%;
+    color: #fff;
+    background-color: #0e111b;
+    padding: 17px 0 17px 25px;
+}
+
+.csgo-topbar2 .pop_tit a {
+    width: 19px;
+    height: 19px;
+    margin-left: 3px;
+    display: inline-block;
+    vertical-align: bottom;
+    background: url(./images/tips_icon.png) no-repeat;
+}
+
+.userInfo {
+    overflow: hidden;
+    margin-top: 14px;
+    margin-bottom: 18px;
+    padding-left: 25px;
+}
+
+.userInfo .portrait {
+    float: left;
+    width: 110px;
+    height: 110px;
+    border: 1px solid #31384d;
+}
+
+.userInfo .portrait img {
+    width: 110px;
+    height: 110px;
+}
+
+.userInfo_none {
+    display: none;
+    margin-top: 16px;
+    padding-left: 25px;
+}
+
+.user_state {
+    width: 272px;
+    float: left;
+    padding-left: 18px;
+}
+
+.user_state li {
+    line-height: 38px;
+    height: 38px;
+}
+
+.user_state li span {
+    float: left;
+    width: 76px;
+}
+
+.user_state li em {
+    font-style: normal;
+    width: 220px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+
+.item .dl {
+    padding: 16px 0 0 25px;
+}
+
+.item .dl:last-child {
+    padding-top: 5px;
+}
+
+.item .dl .dt {
+    float: left;
+}
+
+.item .dl .dd {
+    margin-left: 85px;
+}
+
+.item .dl .dt {
+    float: left;
+}
+
+.item .dl .dd .stateList li {
+    float: left;
+    position: relative;
+    padding-right: 5px;
+    margin: 0 15px 15px 0;
+}
+
+.item .dl .dd .stateList li:last-child {
+    margin-right: 0;
+}
+
+.item .dl .dd .stateList li i {
+    height: 20px;
+    display: inline-block;
+    vertical-align: sub;
+    margin-right: 5px;
+}
+
+.item .dl .dd .stateList li.state1 i {
+    width: 19px;
+    background-image: url(./images/state_icon01.png);
+}
+
+.item .dl .dd .stateList li.state2 i {
+    width: 14px;
+    background-image: url(./images/state_icon02.png);
+}
+
+.item .dl .dd .stateList li.state3 i {
+    width: 23px;
+    height: 15px;
+    vertical-align: middle;
+    background-image: url(./images/state_icon03.png);
+}
+
+.item .dl .dd .stateList li.state4 i {
+    width: 20px;
+    background-image: url(./images/state_icon04.png);
+}
+
+.csgo-bottom {
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, "Helvetica Neue", Helvetica,
+        "sans-serif";
+    background-color: #000;
+    background-repeat: no-repeat;
+    z-index: 1;
+    font-size: 12px;
+    color: #959595;
+    position: relative;
+}
+
+.rel1100 {
+    margin: 0 auto;
+    width: 1104px;
+    position: relative;
+}
+
+.foot_dl {
+    position: absolute;
+    top: 40px;
+}
+
+.foot_dl dt {
+    float: left;
+    padding-left: 7px;
+}
+
+.foot_dl dt a {
+    float: left;
+    padding: 0 12px;
+}
+
+.foot_dl dt a.wanmei {
+    border-right: 1px solid #000;
+}
+
+.foot_dl dd {
+    float: right;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.25;
+    max-width: 796px;
+}
+
+.csgo-bottom .rel1100 .certificate {
+    position: absolute;
+    top: 78px;
+    left: 85px !important;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #959595;
+    text-align: center;
+}
+
+.remark {
+    text-align: left;
+    display: inline-block;
+    margin-left: -12px;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .csgo-nav .csgo-topbar2.in,
+    .csgo-nav .csgo-topbar2.out {
+        right: 100px;
+    }
+
+    .csgo-nav_list .btn-menu {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+    }
+
+    .csgo-navbox .csgo-topbar2 .pop {
+        position: fixed;
+        top: 70px;
+    }
+
+    .csgo-topbar2.in::after {
+        display: none;
+    }
+
+    .csgo-topbar2.in .log_in span:first-child {
+        display: none;
+    }
+
+    .csgo-topbar2.in .log_in .log_btn a {
+        margin-top: 3px;
+        display: block;
+        width: 25px;
+        height: 20px;
+        font-size: 0;
+        background-image: url("./images/icon-user.png");
+    }
+
+    .csgo-nav {
+        width: 100%;
+    }
+
+    .csgo-logo {
+        position: absolute;
+        left: 40px;
+    }
+
+    .csgo-nav_list {
+        width: 100%;
+    }
+
+    .csgo-nav_list .nav-item {
+        position: absolute;
+        width: 200px;
+        right: -200px;
+        top: 70px;
+        background-color: #0e111b;
+        transition: right 0.6s;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+        display: none;
+    }
+
+    .csgo-nav_list .nav-item.show {
+        display: block;
+        right: 0;
+    }
+
+    .csgo-nav_list .nav-item.show::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: all 0.2s;
+    }
+
+    .csgo-nav_list .nav-item>li {
+        height: auto;
+        float: initial;
+        border-bottom: 2px solid #161a26;
+    }
+
+    .csgo-nav_list .nav-item>li>a {
+        padding: 0 48px;
+        height: auto;
+    }
+
+    .csgo-nav_list .nav-item>li a.icon-arrow::before {
+        top: 19px;
+        right: 48px;
+    }
+
+    .csgo-nav_list a span {
+        top: 42px;
+        left: 48px;
+        margin-left: 0;
+    }
+
+    .csgo-nav_list .nav-item>li ol {
+        position: initial;
+        width: 100%;
+        background-color: #161a26;
+    }
+
+    .csgo-nav_list .nav-item>li ol a {
+        padding: 10px 48px;
+    }
+
+    .csgo-nav_list .nav-item>li ol li:hover {
+        background-color: transparent;
+    }
+
+    .csgo-nav_list a h4 {
+        height: 42px;
+        line-height: 42px;
+        font-size: 16px;
+    }
+
+    .csgo-bottom .rel1100 {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .csgo-bottom .foot_dl {
+        position: initial;
+    }
+
+    .csgo-bottom .foot_dl dt,
+    .csgo-bottom .foot_dl dd {
+        float: initial;
+        overflow: hidden;
+        padding: 0 40px;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .csgo-bottom .foot_dl dt a {
+        padding: 0;
+    }
+
+    .g-bd-mobile {
+        background-color: #000;
+    }
+
+    body .csgo-bottom .rel1100 .certificate {
+        position: initial;
+        padding: 6px 40px;
+        text-align: center;
+    }
+
+    .csgo-bottom .m-br {
+        display: block;
+    }
+
+    .csgo-bottom .s-line {
+        display: none;
+    }
+
+    .csgo-bottom .remark {
+        margin-left: 0;
+        display: block;
+        text-align: center;
+    }
+}
+
+/* dialog login */
+.g-pw-dialog-login {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.g-pw-dialog-main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    margin-top: -240px;
+    width: 50%;
+    height: 480px;
+    min-width: 500px;
+    background: rgba(36, 40, 52, 0.95);
+}
+
+.g-pw-dialog-close {
+    background: #cad9eb;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+}
+
+.g-pw-dialog-close:hover {
+    filter: brightness(0.9);
+}
+
+@media screen and (max-width: 750px) {
+    .g-pw-dialog-login {
+        min-width: 80%;
+        margin-top: -0;
+    }
+
+    .csgo-bottom .foot_dl dt,
+    .csgo-bottom .foot_dl dd {
+        padding: 0 20px;
+    }
+
+    body .csgo-bottom .rel1100 .certificate {
+        padding: 6px 20px;
+    }
+}
+
+.topguide {
+    position: relative;
+    z-index: 200;
+}
+
+.topguide .tg-header {
+    background: #252935;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.topguide .tg-header span {
+    position: relative;
+}
+
+.topguide .tg-header span:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -30px;
+    top: 10px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+}
+
+.topguide .tg-header span:before {
+    border-top: 7px solid #fff;
+}
+
+.topguide .tg-header.on span:before {
+    border-bottom: 7px solid #fff;
+    border-top: 0;
+}
+
+.topguide .tg-content {
+    background: #c2cad7;
+    height: 375px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-height: 375px;
+}
+
+.topguide .tg-content .tg-steps {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.step-title {
+    padding: 10px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.topguide .step-box {
+    margin-right: 10px;
+}
+
+.topguide .tg-step:last-child .step-box {
+    margin-right: 0;
+}
+
+.topguide .tg-step {
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+
+.topguide .step-num {
+    font-size: 54px;
+    height: 40px;
+    line-height: 40px;
+    font-family: "arial black";
+    background: #808794;
+    overflow: hidden;
+    position: relative;
+}
+
+.topguide .step-con {
+    background: #4e5460;
+    height: 80px;
+    box-sizing: border-box;
+    padding: 10px 0;
+    color: #d3d9e3;
+}
+
+.topguide .step-num span {
+    position: absolute;
+    top: 2px;
+    color: #4e5460;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.topguide .step-con p {
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+
+.topguide .step-box em {
+    font-style: normal;
+}
+
+.topguide .step-box {
+    position: relative;
+}
+
+.topguide .tg-step01 .step-con {
+    padding-top: 25px;
+}
+
+.tg-steps-content2 .tg-step01 .step-con {
+    padding-top: 20px;
+}
+
+.topguide .tg-step02 .step-con {
+    padding-top: 25px;
+}
+
+.tg-steps-content2 .tg-step02 .step-con {
+    padding-top: 20px;
+}
+
+.topguide .tg-step03 .step-con {
+    padding-top: 20px;
+}
+
+.topguide .tg-step04 .step-con {
+    padding-top: 25px;
+}
+
+.topguide .tg-step04 .step-con p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.topguide .tg-step04 .s-desc {
+    width: 240px;
+    font-size: 18px;
+}
+
+.topguide .tg-step04 .tip {
+    width: 236px;
+    height: 107px;
+    position: absolute;
+    left: -182px;
+    top: -131px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 100;
+    display: none;
+    background: url(https://static.pwesports.cn/csgostatic/csgo/2318fab2-a437-47f8-997e-593390dd8218.png) no-repeat;
+}
+
+.topguide .step-bottom {
+    position: absolute;
+    bottom: -32px;
+    border: 1px solid #808794;
+    border-top: 0 none;
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    right: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.topguide .ico-qa {
+    border-radius: 50%;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #f87500;
+    color: #4e5460;
+    font-weight: 700;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+    font-family: "arial black";
+    margin: 0 -2px;
+    position: relative;
+}
+
+.topguide .tg-step04 .ico-qa:hover span.tip {
+    display: block;
+}
+
+.topguide .tg-step04 .step-bottom .s-desc {
+    bottom: -9px;
+    z-index: 2;
+}
+
+.topguide .tg-step04 .lnk {
+    color: #4e5460;
+}
+
+.topguide .step-bottom .s-desc {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    display: inline-block;
+    background: #c2cad7;
+    padding: 0 5px;
+    font-size: 18px;
+    color: #4e5460;
+    width: 120px;
+}
+
+.topguide .step-con .btn-download {
+    display: inline-block;
+    width: 170px;
+    height: 28px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #d3d9e3;
+    background: #717885;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    border-color: #7e8490 #5c626c #5c626c #7e8490;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.topguide .step-con .btn-download:hover {
+    background: #7a8393;
+}
+
+.topguide .step-con em {
+    font-style: normal;
+    font-weight: 400;
+}
+
+.topguide .hl {
+    color: #f87500;
+}
+
+.topguide .step-con .s-f {
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 900px) and (min-width: 786px) {
+    .topguide .step-con .btn-download {
+        max-width: 139px;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 786px) {
+    .topguide .step-bottom .s-desc {
+        font-size: 14px;
+        max-width: 200px;
+    }
+
+    .topguide .tg-step.tg-step02 .step-con {
+        padding: 15px 25px;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 786px) {
+    .topguide .step-con p {
+        font-size: 12px;
+    }
+
+    .topguide .step-bottom .s-desc {
+        max-width: 180px;
+    }
+
+    .topguide .step-con .s-f {
+        margin-right: -1px;
+    }
+
+    .topguide .step-box {
+        margin-right: 6px;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    .tg-content {
+        max-height: 600px !important
+    }
+
+    .m-step-tab {
+        display: block
+    }
+
+    .step-title {
+        display: none
+    }
+
+    .tg-content.m-tab2 .tg-steps-content1 {
+        display: none
+    }
+
+    .tg-content.m-tab1 .tg-steps-content2 {
+        display: none
+    }
+
+    .topguide .tg-step {
+        float: none;
+        width: 100%;
+    }
+
+    .topguide .tg-step .step-box {
+        margin-right: 0;
+    }
+
+    .topguide .tg-content {
+        height: auto;
+        max-height: 660px;
+    }
+
+    .topguide .tg-content .tg-steps {
+        padding: 15px;
+    }
+
+    .topguide .tg-step {
+        margin-bottom: 10px;
+    }
+
+    .topguide .tg-step .step-con {
+        padding-top: 28px !important
+    }
+
+    .topguide .tg-step .step-con p {
+        display: inline-block;
+        font-size: 16px !important;
+    }
+}
